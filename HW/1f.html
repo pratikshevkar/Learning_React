@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="body"></div>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+        const body = document.querySelector("body")
+        const pCost = 10
+        const sCost = 5
+        const total = pCost +sCost
+        const App = (
+            <div>
+                <p>Product Cost: ${pCost}</p>
+                <p>Shipping Cost: ${sCost}</p>
+                <p>Total Cost: ${total}</p>
+                <button>Place your order</button>
+            </div>
+        );
+
+        ReactDOM.createRoot(body).render(App)
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="body"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+        const amt = 10
+        const app = (
+            <div>
+                <h1>Cotton Scoks</h1>
+                <p>Price: ${amt}</p>
+                <button onClick={fun()} >Add to Cart</button>
+            </div>
+        );
+
+        function fun() {
+            console.log(amt)
+        }
+
+        const con = document.querySelector('body')
+        const pCost =  
+
+        ReactDOM.createRoot(con).render(app)
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="con"></div>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+        const con = document.querySelector('.con')
+        const name = 'chinmay';
+        const div = (
+            <div>
+                <p>hey {name}</p>
+            </div>
+        )
+
+        ReactDOM.createRoot(con).render(div)
+      
+    </script>
+  </body>
+</html>
