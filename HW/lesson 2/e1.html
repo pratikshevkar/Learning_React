@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Cart</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+      const container = document.querySelector('.js-container');
+
+      function ProductDetails({prod,price,dis,nm}) {
+        if(dis) {
+        return(
+            <>
+                <img src={nm} width="60"></img>
+                <p>{prod}</p>
+                <del><p>Price:${price}</p></del>
+                <p>Discount Price:${dis}</p>
+                <button>Add to Cart</button>
+            </>
+        );
+        } else {
+            return(
+                <>
+                    <div><img src={nm} width="60"></img></div>
+                    <p>{prod}</p>
+                    <p>Price:${price}</p>
+                    <button>Add to Cart</button>
+                </>
+            );
+        }
+      }
+
+      function App() {
+        return(
+            <>
+            <ProductDetails prod = "Cotton Scoks" price="10.90" dis="5" nm="one.jpg"/>
+            <ProductDetails prod = "ball" price="99.90" nm="two.jpg"/>
+            <ProductDetails prod = "shirt" price="1.90" nm="three.jpg"/>
+       
+            </>
+        );
+      }
+
+
+      ReactDOM.createRoot(container).render(<App/>)
+      
+    </script>
+  </body>
+</html>
