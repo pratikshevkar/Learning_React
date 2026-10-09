@@ -15,10 +15,33 @@
       const container = document.querySelector('.body');
 
       function ChatInput() {
+
+        const[inputText,setInputText] = React.useState('');
+        
+      function saveInputText(event) {
+        setInputText(event.target.value);
+      }
+
+      function sendMsg() {
+         setChatMsgs([
+            ...chatMsgs,
+            {
+              msg: 'test',
+              sender: 'user',
+              id: crypto.randomUUID()
+              
+            }
+          ]);
+      }
+
         return(
             <>
-                <input placeholder="enter something" size="30"></input>
-                <button>submit</button>
+                <input placeholder="enter something" size="30"
+                onChange={saveInputText}
+                ></input>
+                <button
+                onClick={sendMsg}
+                >submit</button>
             </>
         );
       }
@@ -50,38 +73,62 @@
             {sender === 'robot' && <img src="robot.png" width="50"/>}
             </div>
         );
-      
       }
 
-      function App() {
+      function ChatMsgs() {
         return(
             <>
-                {/* {ChatInput()} this thing is same as below */}
-                <ChatInput/>
-                <ChatMsg msg="hello chatbot" sender="user"/>
-                <ChatMsg msg="Hello! How can I help you?" sender="robot"/>
-                <ChatMsg msg="can you get me todays date" sender="user"/>
-                <ChatMsg msg="Todays date is 30" sender="robot "/>
+                  
+                {
+                  chatMsgs.map((chatMsg)=> {
+                  return(
+                    <ChatMsg 
+                    msg={chatMsg.msg}
+                    sender = {chatMsg.sender}
+                    key = {chatMsg.id}
+                    />);
+                })}
             
             </>
 
-        )
+        );
+
+         
+      }
+
+      function App() {
+          const [chatMsgs,setChatMsgs] = React.useState(
+          [{
+            msg: 'hello chatbot',
+            sender: 'user',
+            id: 'id1'
+          },{
+            msg: 'Hello! How can I help you',
+            sender: 'robot',
+            id: 'id2'
+          },{
+            msg: 'can you get me todays date',
+            sender: 'user',    
+            id:'id3'
+          },{
+            msg: 'Todays date is 30',
+            sender: 'robot',
+            id:'id5'
+          } 
+        ]);
+        
+        return(
+          <>
+          <ChatInput
+          chatMsgs={chatMsgs}
+          setChatMsgs={setChatMsgs}
+          />
+          <ChatMsgs/>
+          </>
+        );
         
       }
 
-
-    //   const app = (
-    //     <>
-    //         {/* {ChatInput()} this thing is same as below */}
-    //         <ChatInput/>
-    //         <ChatMsg msg="hello chatbot" sender="user"/>
-    //         <ChatMsg msg="Hello! How can I help you?" sender="robot"/>
-    //         <ChatMsg msg="can you get me todays date" sender="user"/>
-    //         <ChatMsg msg="Todays date is 30" sender="robot "/>
-            
-    //     </>
-    //   );
-      
       ReactDOM.createRoot(container).render(<App />)
       
     </script>
